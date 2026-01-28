@@ -1,6 +1,6 @@
 import 'dart:io';
 
-dynamic addTask(Map<String, String> tasks) {
+addTask(Map<String, String> tasks) {
   print("Please enter the task title:");
   String? title = stdin.readLineSync();
   print("Please enter the task description:");
@@ -47,7 +47,7 @@ removeTask(Map<String, String> tasks) {
 
 void main() {
   Map<String, String> tasks = {};
-  String? choice;
+  int choice;
   do {
     print("---To Do List Application---");
     print("1. Add Task");
@@ -56,21 +56,20 @@ void main() {
     print("4. Exit");
     print("Select an option:");
 
-    choice = stdin.readLineSync();
-    if (choice == null || choice.isEmpty) {
-      print('Invalid input. Please enter a number.');
-      continue;
-    }
+    String? input = stdin.readLineSync()!;
+    choice = int.tryParse(input) ?? 0;
 
     switch (choice) {
       case 1:
-        addTask(tasks);
+        var result = addTask(tasks);
+        if (result is String) print(result);
         break;
       case 2:
         viewTasks(tasks);
         break;
       case 3:
-        removeTask(tasks);
+        var result = removeTask(tasks);
+        print(result);
         break;
       case 4:
         print('Exiting application.');
