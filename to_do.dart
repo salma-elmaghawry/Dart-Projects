@@ -18,7 +18,7 @@ dynamic addTask(Map<String, String> tasks) {
 }
 
 viewTasks(Map<String, String> tasks) {
-  while (tasks.length == 0) {
+  if (tasks.isEmpty) {
     print('No tasks available.');
     return;
   }
@@ -47,7 +47,7 @@ removeTask(Map<String, String> tasks) {
 
 void main() {
   Map<String, String> tasks = {};
-  int choice;
+  String? choice;
   do {
     print("---To Do List Application---");
     print("1. Add Task");
@@ -55,7 +55,13 @@ void main() {
     print("3. Remove Task");
     print("4. Exit");
     print("Select an option:");
-    choice = int.parse(stdin.readLineSync()!);
+
+    choice = stdin.readLineSync();
+    if (choice == null || choice.isEmpty) {
+      print('Invalid input. Please enter a number.');
+      continue;
+    }
+
     switch (choice) {
       case 1:
         addTask(tasks);
