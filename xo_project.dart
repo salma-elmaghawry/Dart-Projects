@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 void displayBoard(List<List<String>> board) {
@@ -18,16 +17,16 @@ void displayBoard(List<List<String>> board) {
 bool checkWin(List<List<String>> board, String player) {
   // Check rows and columns
   for (int i = 0; i < 3; ++i) {
-    if ((board[i][0] == player &&
-            board[i][1] == player &&
-            board[i][2] == player) ||
+    if (
+    // Check rows
+    (board[i][0] == player && board[i][1] == player && board[i][2] == player) ||
+        // Check columns
         (board[0][i] == player &&
             board[1][i] == player &&
             board[2][i] == player)) {
       return true;
     }
   }
-
   // Check diagonals
   if ((board[0][0] == player &&
           board[1][1] == player &&
@@ -37,7 +36,6 @@ bool checkWin(List<List<String>> board, String player) {
           board[2][0] == player)) {
     return true;
   }
-
   return false;
 }
 
@@ -45,7 +43,7 @@ bool isBoardFull(List<List<String>> board) {
   for (int i = 0; i < 3; ++i) {
     for (int j = 0; j < 3; ++j) {
       if (board[i][j] == ' ') {
-        return false;
+        return false; // not full
       }
     }
   }
@@ -64,22 +62,22 @@ void main() {
   while (true) {
     displayBoard(board);
 
-    stdout.write("Player $currentPlayer, enter row (1-3) and column (1-3): ");
-    String? input = stdin.readLineSync();
+    stdout.write("Player $currentPlayer, enter row (1-3): ");
+    String? rowInput = stdin.readLineSync();
 
-    if (input == null || input.isEmpty) {
+    stdout.write("Player $currentPlayer, enter column (1-3): ");
+    String? colInput = stdin.readLineSync();
+
+    if (rowInput == null ||
+        colInput == null ||
+        rowInput.isEmpty ||
+        colInput.isEmpty) {
       print("Invalid input! Try again.");
       continue;
     }
 
-    List<String> parts = input.split(' ');
-    if (parts.length != 2) {
-      print("Invalid input! Try again.");
-      continue;
-    }
-
-    int? row = int.tryParse(parts[0]);
-    int? col = int.tryParse(parts[1]);
+    int? row = int.tryParse(rowInput);
+    int? col = int.tryParse(colInput);
 
     if (row == null || col == null) {
       print("Invalid input! Try again.");
@@ -104,7 +102,7 @@ void main() {
 
     if (isBoardFull(board)) {
       displayBoard(board);
-      print("It's a draw!");
+      print("Game is over!");
       break;
     }
 
