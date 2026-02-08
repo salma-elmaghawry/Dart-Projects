@@ -1,0 +1,14 @@
+{
+  "roots": [
+    "lms_project"
+  ],
+  "packages": [
+    {
+      "name": "lms_project",
+      "version": "1.0.0",
+      "dependencies": [],
+      "devDependencies": []
+    }
+  ],
+  "configVersion": 1
+}
