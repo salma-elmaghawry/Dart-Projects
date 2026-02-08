@@ -1,0 +1,16 @@
+{
+  "configVersion": 2,
+  "packages": [
+    {
+      "name": "lms_project",
+      "rootUri": "../",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    }
+  ],
+  "generator": "pub",
+  "generatorVersion": "3.10.3",
+  "flutterRoot": "file:///Users/salmaelmaghawry/development/flutter",
+  "flutterVersion": "3.38.4",
+  "pubCache": "file:///Users/salmaelmaghawry/.pub-cache"
+}
