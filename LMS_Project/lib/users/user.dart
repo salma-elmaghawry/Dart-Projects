@@ -14,6 +14,6 @@ abstract class User {
   void viewProfile() {
     print('User #$id: $name ($role)');
   }
-
+  //Abstract method to be implemented by subclasses
   void performAction(String action);
 }
