@@ -54,7 +54,7 @@ void main() {
   List<List<String>> board = [
     [' ', ' ', ' '],
     [' ', ' ', ' '],
-    [' ', ' ', ' '],
+    [' ', ' ', ' '], // empty board or have 
   ];
 
   String currentPlayer = 'X';
