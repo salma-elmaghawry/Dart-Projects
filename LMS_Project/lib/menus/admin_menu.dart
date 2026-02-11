@@ -69,6 +69,8 @@ class AdminMenu {
     print('Instructor $name created successfully!');
   }
 
+  
+
   void _createStudent() {
     final id = int.tryParse(_getUserInput('Enter Student ID: ')) ?? 0;
     final name = _getUserInput('Enter Student Name: ');
